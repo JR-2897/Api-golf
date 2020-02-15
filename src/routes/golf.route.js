@@ -3,7 +3,7 @@ const router=express.Router();
 const golf =require('../controllers/golf.controller');
 
 //création d'un golf
-router.post('/golf',golf.create);
+router.post('/golf', golf.create);
 
 //recherche d'un golf par son id
 router.get('/golf/:id', golf.findById);

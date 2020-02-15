@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.Router(); 
+const router = express.Router();
 const admin = require('../controllers/admin.controller');
 
 
@@ -8,6 +8,6 @@ const admin = require('../controllers/admin.controller');
 router.post('/admin', auth.create);
 
 //Connexion à un compte administrateur
-router.post('/admin/login',admin.login);
+//router.post('/admin/login',admin.login);
 
 module.exports = router;
