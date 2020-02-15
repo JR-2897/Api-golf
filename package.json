@@ -1,10 +1,11 @@
 {
   "name": "Projet_nodeJS",
   "version": "1.0.0",
-  "description": "",
+  "description": "VILLIERS Pierre\r RAGUENEAU Jean",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -17,5 +18,14 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.8.9",
     "nodemon": "^2.0.2"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JR-2897/Api-golf.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JR-2897/Api-golf/issues"
+  },
+  "homepage": "https://github.com/JR-2897/Api-golf#readme"
 }

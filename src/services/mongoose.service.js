@@ -8,17 +8,21 @@ const app = express();
 const config=require('../configs/db.config');
 const port = 3046;
 
-exports.connect = (req,res) =>{
-	mongoose.connect('mongodb://admin:G36CJfcTA5g6@ds217799.mlab.com:17799/api-golf', (err) => {
-		if(err) {
-			console.log('Database not found');
-		}
-		else {
-			console.log('Database connected');
-		}
-	});
+exports.connect = () => {
+  let url = config.url;
 
-	app.listen(port, () => {
-		console.log(`Server on on port ${port}`);
-	})
+  mongoose.connect(url,
+    {
+      useNewUrlParser : true
+    }
+  ).then(
+    () => {
+      console.log('Nous sommes bien connecte a la base de donnees');
+    }
+  ).catch(
+    err => {
+      console.log('Nous n arrivons pas a nous connecter a la base de donnee car :', err);
+      process.exit(-1);
+    }
+  )
 }
