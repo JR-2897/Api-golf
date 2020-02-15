@@ -5,7 +5,7 @@ const admin = require('../controllers/admin.controller');
 
 //Création d'un compte administrateur
 
-router.post('/admin', auth.create);
+router.post('/admin', admin.create);
 
 //Connexion à un compte administrateur
 //router.post('/admin/login',admin.login);

@@ -10,7 +10,7 @@ const app= express();
 app.use(bodyParser.json());
 app.use(cors);
 
-//routes 
+//routes
 app.use('/api/v1',apiRouter);
 
 exports.start = () =>{
