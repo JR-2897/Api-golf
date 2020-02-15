@@ -1,11 +1,11 @@
 const Admin = require('../models/admin.model');
-//const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const p_jwt = require('../configs/jwt.config');
 
 //Création d'un compte admin
 exports.create = (req,res) =>{
-	//let hashedPassword = bcrypt.hashSync(req.body.password,8);
+	let hashedPassword = bcrypt.hashSync(req.body.password,8);
 	const admin = new Admin({
         lastname : req.body.lastname,
         firstname : req.body.firstname,
@@ -40,20 +40,20 @@ exports.create = (req,res) =>{
         })
     }
 
-    /* Connexion pour pouvoir utiliser l'api
+    //Connexion pour pouvoir utiliser l'api
 exports.login= (req,res)=>{
 	Admin.findOne(
 		{email:req.body.email},
 		function(err,admin){
 			if(!admin) return res.status(404).send("L'administrateur recherché n'existe pas.");
-            comparaison des mdp
+            //comparaison des mdp
 			let passwordIsValid= bcrypt.compareSync(req.body.password,admin.password);
-			check si la comparaison est True
+			//check si la comparaison est True
 			if(!passwordIsValid) return res.status(401).send({
 				auth:false,
 				token: null
 			});
-			On génère un token de session
+			//On génère un token de session
 			let token = jwt.sign(
                 {
                     id:admin._id,
@@ -71,4 +71,4 @@ exports.login= (req,res)=>{
 		}
 	)
 
-}*/
+}
