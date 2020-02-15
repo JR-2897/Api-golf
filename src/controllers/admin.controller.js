@@ -11,7 +11,7 @@ exports.create = (req,res) =>{
         firstname : req.body.firstname,
         function: req.body.firstname,
 		email : req.body.email,
-		password : req.body.password,
+		password : hashedPassword,
 		admin : req.body.admin
 	})
 	admin.save()
