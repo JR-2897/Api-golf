@@ -4,8 +4,10 @@
 /********************************************/
 
 const Golf=require('../models/golf.model');
+const token = require('../helpers/verifytoken');
 
 exports.create = (req,res) => {
+  token.verifyToken(req,res, function(req,res){
     const golf = new Golf({
         title:req.body.title,
         latitude:req.body.latitude,
@@ -18,7 +20,8 @@ exports.create = (req,res) => {
         }).catch(err =>{
             console.log(err)
         })
-    }
+  })
+}
 
 // Permet d'afficher le golf correspond a l id donnee par le client
 exports.findById=(req,res)=>{
@@ -40,6 +43,7 @@ exports.findById=(req,res)=>{
 
 // Permet de modifier le golf grace a l id donnee par le client
 exports.findByIdAndUpdate = (req,res)=>{
+  token.verifyToken(req,res, function(req,res){
     Golf.findByIdAndUpdate(req.params.id,req.body)
     .then(golf =>{
         if(!golf){
@@ -61,10 +65,12 @@ exports.findByIdAndUpdate = (req,res)=>{
 			message:err.message
 		})
 	})
+})
 }
 
 //Permet la suppression du golf grace a l id donnee par le client
 exports.findByIdAndDelete = (req,res)=>{
+  token.verifyToken(req,res, function(req,res){
     Golf.findByIdAndDelete(req.params.id)
     .then(golf =>{
         if(!golf){
@@ -79,4 +85,5 @@ exports.findByIdAndDelete = (req,res)=>{
 			message:err.message
 		})
 	})
+})
 }

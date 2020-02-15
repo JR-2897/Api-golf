@@ -1,6 +1,8 @@
 const Manager=require('../models/manager.model');
+const token = require('../helpers/verifyToken');
 
 exports.create = (req,res) => {
+token.verifyToken(req,res, function(req,res){
     const manager = new Manager({
         lastname:req.body.lastname,
         firstname:req.body.firstname,
@@ -13,10 +15,12 @@ exports.create = (req,res) => {
         }).catch(err =>{
             console.log(err)
         })
-    }
+  })
+}
 
 // Donne le manager qui correspond à l'id
 exports.findById=(req,res)=>{
+  token.verifyToken(req,res, function(req,res){
     User.findById(req.params.id)
     .then(manager =>{
         if(!manager){
@@ -31,10 +35,12 @@ exports.findById=(req,res)=>{
 			message:err.message
 		})
 	})
+})
 }
 
 // Modifie le manager qui correspond à l'id
 exports.findByIdAndUpdate = (req,res)=>{
+  token.verifyToken(req,res, function(req,res){
     Manager.findByIdAndUpdate(req.params.id,req.body)
     .then(manager =>{
         if(!manager){
@@ -56,10 +62,12 @@ exports.findByIdAndUpdate = (req,res)=>{
 			message:err.message
 		})
 	})
+})
 }
 
 //Supprime le manager correspondant à l'id
-exports.findByIdAndDelete = (req,res)=>{ 
+exports.findByIdAndDelete = (req,res)=>{
+token.verifyToken(req,res, function(req,res){
     Manager.findByIdAndDelete(req.params.id)
     .then(manager =>{
         if(!manager){
@@ -74,4 +82,5 @@ exports.findByIdAndDelete = (req,res)=>{
 			message:err.message
 		})
 	})
+})
 }
