@@ -3,10 +3,7 @@
 /*********************************/
 
 const mongoose = require('mongoose');
-const express = require('express');
-const app = express();
 const config=require('../configs/db.config');
-const port = 3046;
 
 exports.connect = () => {
   let url = config.url;
