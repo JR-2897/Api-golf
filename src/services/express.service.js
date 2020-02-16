@@ -3,7 +3,8 @@ const config = require('../configs/server.config');
 const bodyParser = require('body-parser');
 const apiRouter=require('../routes/');
 const cors=require('cors');
-//démarrer express
+
+//Démarrer express
 const app= express();
 
 //middleware
@@ -17,9 +18,9 @@ exports.start = () =>{
     let port = config.port;
     app.listen(port,(err)=> {
         if(err){
-            console.log('Erreur:${err}');
+            console.log(`Erreur:${err}`);
             process.exit(-1);
         }
-        console.log('Application en cours de lancement sur le port ',port);
+        console.log(`Application en cours de lancement sur le port ${port}`);
     })
 }

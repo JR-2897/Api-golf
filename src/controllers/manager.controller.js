@@ -75,7 +75,7 @@ token.verifyToken(req,res, function(req,res){
                 message: "Le manager recherché n'existe pas."
             })
         }
-        res.send({message: 'Le manager avec un id ${req.params.id} a bien été supprimé.'});
+        res.send({message: `Le manager avec un id ${req.params.id} a bien été supprimé.`});
     })
     .catch(err=> {
 		res.status(500).send({

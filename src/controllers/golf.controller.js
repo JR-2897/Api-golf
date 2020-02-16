@@ -78,7 +78,7 @@ exports.findByIdAndDelete = (req,res)=>{
                 message: "Erreur Client : L id saisit ne correspond a aucun golf."
             })
         }
-        res.send({message: 'Le manager avec un id ${req.params.id} a bien été supprimé.'});
+        res.send({message: `Le manager avec un id ${req.params.id} a bien été supprimé.`});
     })
     .catch(err=> {
 		res.status(500).send({
