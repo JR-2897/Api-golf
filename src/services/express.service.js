@@ -1,7 +1,7 @@
 const express = require('express');
 const config = require('../configs/server.config');
 const bodyParser = require('body-parser');
-const apiRouter=require('../routes/general.route');
+const apiRouter=require('../routes/');
 const cors=require('cors');
 //démarrer express
 const app= express();
